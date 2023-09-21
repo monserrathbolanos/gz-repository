@@ -1,5 +1,6 @@
 {{ config(schema='transaction') }}
 
+
 WITH 
 
   sales AS (SELECT * FROM `gz_raw_data.raw_gz_sales`)
@@ -19,11 +20,19 @@ SELECT
   -- cost --
   ,CAST(p.purchSE_PRICE AS FLOAT64) AS purchase_price
 	,ROUND(s.quantity*CAST(p.purchSE_PRICE AS FLOAT64),2) AS purchase_cost
-<<<<<<< HEAD
+--<<<<<<< HEAD
 	-- product_margin --
-=======
 	-- margin --
->>>>>>> 6a3042729f2f09d390c791e4727a875a445ec9b5
+-->>>>>>> 6a3042729f2f09d390c791e4727a875a445ec9b5
 	,ROUND(s.revenue-s.quantity*CAST(p.purchSE_PRICE AS FLOAT64),2) AS margin
+    ,{{ margin_percent('s.revenue', 's.quantity*CAST(p.purchSE_PRICE AS FLOAT64)') }} as margin_percent
+    ,{{ product_margin('s.revenue', 's.quantity*CAST(p.purchSE_PRICE AS FLOAT64)') }} as product_margin
+
 FROM sales s
-INNER JOIN product p ON s.pdt_id = p.products_id
+INNER JOIN product p 
+ON s.pdt_id = p.products_id
+
+
+
+
+
