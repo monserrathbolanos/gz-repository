@@ -3,5 +3,5 @@
 {% endmacro %}
 
 {% macro product_margin(turnover, purchase_cost, precision=2) %}
-  ({{ turnover }} - {{ purchase_cost }})
+  ({{ turnover }} - {{ purchase_cost }}) 
 {% endmacro %}
