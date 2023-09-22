@@ -35,3 +35,6 @@ models:
           - name: margin
             description : the product margin. Subtraction of the turnover and the purchase_cost
 
+          - name: orders.sql
+            description: model orders.sql in schema.yml file
+
